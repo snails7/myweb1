@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table style="width:400px; text-align: left; margin: 50px;">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Author</th>
+    </tr>
+
+{% for book in books %}
+    <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ book.1 }}</td>
+    <td>{{ book.2 }}</td>
+    </tr>
+{% endfor %}
+
+    </table>
+
+{%  endblock %}
