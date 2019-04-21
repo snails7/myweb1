@@ -12,9 +12,9 @@
 
 {% for book in books %}
     <tr>
-    <td>{{ forloop.counter }}</td>
-    <td>{{ book.1 }}</td>
-    <td>{{ book.2 }}</td>
+        <td><a href="{% url 'book_detail' book_id=book.0 %}">{{ forloop.counter }}</a></td>
+        <td><a href="{% url 'book_detail' book_id=book.0 %}">{{ book.1 }}</a></td>
+        <td>{{ book.2 }}</td>
     </tr>
 {% endfor %}
 

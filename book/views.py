@@ -12,7 +12,33 @@ def index(request):
     cursor = get_corsor()
     cursor.execute("select id, name, author from pet")
     books = cursor.fetchall()
-    print(books)
 
 
     return render(request, 'index.html', context={"books":books})
+
+def add_book(request):
+    if request.method == 'GET':
+        return render (request, 'add_book.html')
+
+    else:
+        name = request.POST.get("name")
+        author = request.POST.get("author")
+        cursor = get_corsor()
+        cursor.execute("insert into pet(id, name, author) values(NULL, '%s', '%s')" %(name, author))
+    return redirect (reverse('index'))
+
+def book_detail(request, book_id):
+    cursor = get_corsor()
+    cursor.execute("select id, name, author from pet where id=%s" % book_id)
+    book = cursor.fetchone()
+    return render(request, 'book_detail.html', context = {"book":book})
+
+
+def delete_book(request):
+    if request.method == 'POST':
+        book_id = request.POST.get('book_id')
+        cursor = get_corsor()
+        cursor.execute("delete from pet where id=%s" % book_id)
+        return redirect(reverse('index'))
+    else:
+        raise RuntimeError("error deleting")

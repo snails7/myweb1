@@ -31,3 +31,22 @@ li a:hover:not(.active) {
 .active {
     background: #4CAF50;
 }
+
+
+td a:link {
+    text-decoration: none;
+    color: Tomato;
+}
+
+td a:visited {
+    color: black;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+td a:active {
+    color: #4CAF50;
+}
+
